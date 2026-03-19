@@ -1,0 +1,89 @@
+{
+    "system_metadata": {
+        "version": "2024.1",
+        "description": "Top CARC/RARC combinations for automated 835 remittance explanation",
+        "usage_instruction": "Use 'code' as the primary key for lookup when parsing 835 CAS segments."
+    },
+    "CARC_definitions": [
+        {
+            "code": "1",
+            "title": "Deductible Amount",
+            "description": "The amount applied to the patient's annual deductible. The provider should collect this from the patient.",
+            "action": "Verify patient's remaining deductible and bill the patient directly."
+        },
+        {
+            "code": "2",
+            "title": "Coinsurance Amount",
+            "description": "The percentage of the allowed amount that is the patient's responsibility.",
+            "action": "Bill the patient for the coinsurance percentage defined in their plan."
+        },
+        {
+            "code": "16",
+            "title": "Incomplete Claim",
+            "description": "Claim/service lacks information or has submission/billing error(s).",
+            "action": "Check the associated RARC code (e.g., N211) to see exactly what data is missing and resubmit."
+        },
+        {
+            "code": "18",
+            "title": "Duplicate Claim",
+            "description": "This is an exact duplicate of a claim or service that was previously processed.",
+            "action": "Do not resubmit. Check previous remittances for the original payment or denial."
+        },
+        {
+            "code": "22",
+            "title": "Coordination of Benefits (COB)",
+            "description": "This care may be covered by another payer per coordination of benefits rules.",
+            "action": "Identify the primary insurance carrier and submit the claim to them first."
+        },
+        {
+            "code": "26",
+            "title": "Coverage Not Active",
+            "description": "Expenses were incurred before the patient's insurance coverage was active.",
+            "action": "Verify the patient's effective date of coverage and check if the date of service was correct."
+        },
+        {
+            "code": "45",
+            "title": "Contractual Obligation",
+            "description": "Charge exceeds the maximum allowed or contracted fee arrangement between the provider and payer.",
+            "action": "This is usually a mandatory write-off based on the provider's contract with the insurer."
+        },
+        {
+            "code": "96",
+            "title": "Non-covered Charges",
+            "description": "These charges are for services that are statutorily excluded or not covered by the plan.",
+            "action": "Check the plan documents. The patient may be liable if an ABN or notice was signed."
+        },
+        {
+            "code": "109",
+            "title": "Wrong Payer",
+            "description": "Claim not covered by this payer. You must send it to the correct contractor.",
+            "action": "Verify the payer ID on the patient's insurance card and resubmit to the correct entity."
+        }
+    ],
+    "RARC_definitions": [
+        {
+            "code": "N130",
+            "title": "Benefit Restrictions",
+            "description": "Consult plan benefit documents/guidelines for information about restrictions for this service.",
+            "action": "Review the specific medical policy for this procedure on the payer's portal."
+        },
+        {
+            "code": "N115",
+            "title": "Local Coverage Determination (LCD)",
+            "description": "This decision was based on a local coverage determination (LCD).",
+            "action": "Ensure the diagnosis code used (ICD-10) is listed as 'medically necessary' in the payer's LCD list."
+        },
+        {
+            "code": "MA92",
+            "title": "Missing Plan Info",
+            "description": "Missing plan information for other insurance.",
+            "action": "The patient has other active insurance. Update the 'Other Payer' section in the 837 file."
+        },
+        {
+            "code": "N211",
+            "title": "Timely Filing Expired",
+            "description": "The time limit for filing this claim has expired.",
+            "action": "Check if there was an exception or delay; otherwise, this claim is uncollectible."
+        }
+    ]
+}

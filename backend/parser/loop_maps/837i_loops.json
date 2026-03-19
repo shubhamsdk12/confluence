@@ -1,0 +1,92 @@
+{
+    "transaction_type": "837I",
+    "description": "837 Institutional Claims — Loop boundaries derived from edi_mapping_reference.md",
+    "loops": [
+        {
+            "loop_id": "ISA_ENVELOPE",
+            "trigger_segment": "ISA",
+            "ui_label": "Interchange Envelope",
+            "parent": null
+        },
+        {
+            "loop_id": "GS_ENVELOPE",
+            "trigger_segment": "GS",
+            "ui_label": "Functional Group",
+            "parent": "ISA_ENVELOPE"
+        },
+        {
+            "loop_id": "ST_HEADER",
+            "trigger_segment": "ST",
+            "ui_label": "Transaction Set",
+            "parent": "GS_ENVELOPE"
+        },
+        {
+            "loop_id": "1000A",
+            "trigger_segment": "NM1",
+            "qualifier_position": 1,
+            "qualifier_value": "41",
+            "ui_label": "Submitter",
+            "parent": "ST_HEADER"
+        },
+        {
+            "loop_id": "1000B",
+            "trigger_segment": "NM1",
+            "qualifier_position": 1,
+            "qualifier_value": "40",
+            "ui_label": "Receiver",
+            "parent": "ST_HEADER"
+        },
+        {
+            "loop_id": "2000A",
+            "trigger_segment": "HL",
+            "qualifier_position": 3,
+            "qualifier_value": "20",
+            "ui_label": "Billing Provider",
+            "parent": "ST_HEADER"
+        },
+        {
+            "loop_id": "2010AA",
+            "trigger_segment": "NM1",
+            "qualifier_position": 1,
+            "qualifier_value": "85",
+            "ui_label": "Billing Provider Name",
+            "parent": "2000A"
+        },
+        {
+            "loop_id": "2000B",
+            "trigger_segment": "HL",
+            "qualifier_position": 3,
+            "qualifier_value": "22",
+            "ui_label": "Subscriber",
+            "parent": "2000A"
+        },
+        {
+            "loop_id": "2010BA",
+            "trigger_segment": "NM1",
+            "qualifier_position": 1,
+            "qualifier_value": "IL",
+            "ui_label": "Subscriber Name",
+            "parent": "2000B"
+        },
+        {
+            "loop_id": "2010BB",
+            "trigger_segment": "NM1",
+            "qualifier_position": 1,
+            "qualifier_value": "PR",
+            "ui_label": "Payer Name",
+            "parent": "2000B"
+        },
+        {
+            "loop_id": "2300",
+            "trigger_segment": "CLM",
+            "ui_label": "Claim Detail",
+            "parent": "2000B"
+        },
+        {
+            "loop_id": "2400",
+            "trigger_segment": "LX",
+            "ui_label": "Service Line",
+            "parent": "2300"
+        }
+    ]
+}

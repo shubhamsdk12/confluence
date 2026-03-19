@@ -1,0 +1,64 @@
+{
+    "transaction_type": "835",
+    "description": "835 Remittance/Payment — Loop boundaries derived from edi_mapping_reference.md",
+    "loops": [
+        {
+            "loop_id": "ISA_ENVELOPE",
+            "trigger_segment": "ISA",
+            "ui_label": "Interchange Envelope",
+            "parent": null
+        },
+        {
+            "loop_id": "GS_ENVELOPE",
+            "trigger_segment": "GS",
+            "ui_label": "Functional Group",
+            "parent": "ISA_ENVELOPE"
+        },
+        {
+            "loop_id": "ST_HEADER",
+            "trigger_segment": "ST",
+            "ui_label": "Transaction Set",
+            "parent": "GS_ENVELOPE"
+        },
+        {
+            "loop_id": "HEADER",
+            "trigger_segment": "BPR",
+            "ui_label": "Financials",
+            "parent": "ST_HEADER"
+        },
+        {
+            "loop_id": "1000A",
+            "trigger_segment": "N1",
+            "qualifier_position": 1,
+            "qualifier_value": "PR",
+            "ui_label": "Payer Identification",
+            "parent": "ST_HEADER"
+        },
+        {
+            "loop_id": "1000B",
+            "trigger_segment": "N1",
+            "qualifier_position": 1,
+            "qualifier_value": "PE",
+            "ui_label": "Payee Identification",
+            "parent": "ST_HEADER"
+        },
+        {
+            "loop_id": "2000",
+            "trigger_segment": "LX",
+            "ui_label": "Header Number",
+            "parent": "ST_HEADER"
+        },
+        {
+            "loop_id": "2100",
+            "trigger_segment": "CLP",
+            "ui_label": "Claim Status",
+            "parent": "2000"
+        },
+        {
+            "loop_id": "2110",
+            "trigger_segment": "SVC",
+            "ui_label": "Service Payment",
+            "parent": "2100"
+        }
+    ]
+}

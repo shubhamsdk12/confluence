@@ -1,0 +1,18 @@
+{
+    "rag_config": {
+        "embedding_model": "text-embedding-3-small",
+        "retrieval_strategy": "Maximal Marginal Relevance (MMR)",
+        "lambda_param": 0.5,
+        "top_k": 5,
+        "source_priority": [
+            "Official HIPAA 5010 Implementation Guide",
+            "CMS Medicare Claims Processing Manual",
+            "WEDI CARC/RARC Code List"
+        ]
+    },
+    "validation_thresholds": {
+        "npi_luhn_check": true,
+        "claim_balance_tolerance": 0.01,
+        "date_format": "CCYYMMDD"
+    }
+}

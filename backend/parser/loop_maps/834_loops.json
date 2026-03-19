@@ -1,0 +1,66 @@
+{
+    "transaction_type": "834",
+    "description": "834 Enrollment — Loop boundaries derived from edi_mapping_reference.md",
+    "loops": [
+        {
+            "loop_id": "ISA_ENVELOPE",
+            "trigger_segment": "ISA",
+            "ui_label": "Interchange Envelope",
+            "parent": null
+        },
+        {
+            "loop_id": "GS_ENVELOPE",
+            "trigger_segment": "GS",
+            "ui_label": "Functional Group",
+            "parent": "ISA_ENVELOPE"
+        },
+        {
+            "loop_id": "ST_HEADER",
+            "trigger_segment": "ST",
+            "ui_label": "Transaction Set",
+            "parent": "GS_ENVELOPE"
+        },
+        {
+            "loop_id": "HEADER",
+            "trigger_segment": "BGN",
+            "ui_label": "Beginning Segment",
+            "parent": "ST_HEADER"
+        },
+        {
+            "loop_id": "1000A",
+            "trigger_segment": "N1",
+            "qualifier_position": 1,
+            "qualifier_value": "P5",
+            "ui_label": "Sponsor Name",
+            "parent": "ST_HEADER"
+        },
+        {
+            "loop_id": "1000B",
+            "trigger_segment": "N1",
+            "qualifier_position": 1,
+            "qualifier_value": "IN",
+            "ui_label": "Insurer Name",
+            "parent": "ST_HEADER"
+        },
+        {
+            "loop_id": "2000",
+            "trigger_segment": "INS",
+            "ui_label": "Member Detail",
+            "parent": "ST_HEADER"
+        },
+        {
+            "loop_id": "2100A",
+            "trigger_segment": "NM1",
+            "qualifier_position": 1,
+            "qualifier_value": "IL",
+            "ui_label": "Member Name",
+            "parent": "2000"
+        },
+        {
+            "loop_id": "2300",
+            "trigger_segment": "HD",
+            "ui_label": "Coverage",
+            "parent": "2000"
+        }
+    ]
+}
