@@ -1,0 +1,15 @@
+HIPAA X12 837P: CLM segment is mandatory. Missing CLM constitutes a fatal structural error.
+ICD-10 diagnosis codes must be present on every professional claim (837P). Minimum one HI segment required.
+NPI (National Provider Identifier) must be a 10-digit numeric string. Invalid NPI causes claim rejection.
+Service date (DTP*472) must not be a future date. Future-dated claims are rejected by payers.
+Total charge amount must be greater than zero. Zero-dollar claims trigger manual review.
+Patient date of birth must be a valid calendar date in CCYYMMDD format.
+Duplicate claim_id within the same trading partner constitutes a duplicate submission violation.
+Procedure code must be a valid CPT-4 or HCPCS Level II code. Unlisted codes require special handling.
+Coordination of Benefits (COB): When secondary insurance is present, primary payment information must be provided in the SBR/CAS segments.
+Referral Requirements: Claims for services requiring prior authorization must include a valid Referral Number in the REF segment (REF*9F).
+Timely Filing: Claims must be submitted within the payer-specified timely filing limit, typically 95 or 180 days from the date of service.
+Place of Service (POS) Codes: The Place of Service code in CLM05-1 must be a valid 2-digit HIPAA standard code (e.g., 11 for Office, 21 for Inpatient Hospital).
+Modifier Usage: A maximum of four modifiers can be appended to a CPT/HCPCS procedure code in the SV1 segment (SV101-3 through SV101-6).
+Rendering vs Billing Provider NPI: The Rendering Provider NPI (Loop 2310B) must differ from the Billing Provider NPI (Loop 2010AA) if they represent different entities.
+Claim Frequency Type Code: The Claim Frequency Type Code in CLM05-3 must represent a valid transaction type (e.g., 1 for Original, 7 for Replacement, 8 for Void).

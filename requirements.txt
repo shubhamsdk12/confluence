@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic[email]>=2.0
+pydantic-settings
+chromadb
+sentence-transformers
+neo4j
+openai
+python-dotenv
+sqlalchemy
+asyncpg

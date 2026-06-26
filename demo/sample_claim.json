@@ -1,0 +1,19 @@
+{
+  "claim_id": "CLM001",
+  "patient": {
+    "id": "PAT001",
+    "name": "JOHN DOE",
+    "dob": "19800101",
+    "member_id": "PAT001"
+  },
+  "provider": {
+    "npi": "12345",
+    "name": "HEALTHCARE CLINIC"
+  },
+  "service_date": "2030-12-31",
+  "total_charge": 150.0,
+  "diagnosis_codes": [],
+  "procedure_codes": [
+    "99213"
+  ]
+}
